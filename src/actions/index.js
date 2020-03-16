@@ -1,1 +1,3 @@
-export { default as actions } from "./actions";
+import { addCourse } from "./actions";
+
+export { addCourse };
