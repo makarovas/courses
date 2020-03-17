@@ -1,3 +1,3 @@
-import { addCourse } from "./actions";
+import { addCourse, loadCourses } from "./actions";
 
-export { addCourse };
+export { addCourse, loadCourses };

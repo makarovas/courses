@@ -56,9 +56,11 @@ function CourseListPage({ courses, dispatch }) {
     <div>
       <ul className="list-group">
         {courses.map((course, i) => {
+          debugger;
+
           return (
             <li key={i} className="list-group-item list-group-item-action">
-              {course.name}
+              {course.course.name}
             </li>
           );
         })}
