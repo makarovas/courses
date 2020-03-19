@@ -5,7 +5,9 @@ import {
   ADD_COURSE_ERROR,
   LOAD_COURSES_SUCCESS,
   LOAD_COURSES_BEGIN,
-  LOAD_COURSES_ERROR
+  LOAD_COURSES_ERROR,
+  OPEN_NEW_COURSE_MODAL,
+  CLOSE_NEW_COURSE_MODAL
 } from "../consts";
 import { createCourse, getCourses } from "../api";
 
@@ -45,3 +47,11 @@ export const loadCourses = () => {
       });
   };
 };
+
+export function openNewCourseModal() {
+  return { type: OPEN_NEW_COURSE_MODAL };
+}
+
+export function closeNewCourseModal() {
+  return { type: CLOSE_NEW_COURSE_MODAL };
+}

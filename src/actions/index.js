@@ -1,3 +1,8 @@
-import { addCourse, loadCourses } from "./actions";
+import {
+  addCourse,
+  loadCourses,
+  openNewCourseModal,
+  closeNewCourseModal
+} from "./actions";
 
-export { addCourse, loadCourses };
+export { addCourse, loadCourses, openNewCourseModal, closeNewCourseModal };

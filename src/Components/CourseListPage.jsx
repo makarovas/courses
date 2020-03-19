@@ -2,21 +2,17 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import Modal from "react-modal";
 import NewCourse from "./NewCourse";
+import { openNewCourseModal, closeNewCourseModal } from "../actions";
 
 function CourseListPage({
-  saveError,
   coursesLoading,
   coursesError,
   courses,
-  dispatch,
-  saveInProgress
+  isModalOpen,
+  openNewCourseModal,
+  closeNewCourseModal
 }) {
   const [isSubmitting] = useState(false);
-  // const handleInputChange = e => {
-  //   const name = e.target.name;
-  //   const value = e.target.value;
-  //   setValue({ [name]: value });
-  // };
   if (coursesLoading) {
     return <div>Loading...</div>;
   }
@@ -27,7 +23,7 @@ function CourseListPage({
     <div>
       <ul className="list-group">
         <p className="h2">Your courses list</p>
-        <button>New course</button>
+        <button onClick={openNewCourseModal}>New course</button>
         {courses.map((course, i) => {
           return (
             <li key={i} className="list-group-item list-group-item-action">
@@ -36,7 +32,7 @@ function CourseListPage({
           );
         })}
       </ul>
-      <Modal isOpen={true}>
+      <Modal isOpen={isModalOpen} onRequestClose={closeNewCourseModal}>
         <NewCourse />
       </Modal>
     </div>
@@ -46,6 +42,11 @@ function CourseListPage({
 const mapStateToProps = state => ({
   courses: state.courses,
   coursesLoading: state.coursesLoading,
-  coursesError: state.coursesError
+  coursesError: state.coursesError,
+  isModalOpen: state.newCourseModalOpen
 });
-export default connect(mapStateToProps)(CourseListPage);
+const mapDispatchToProps = {
+  openNewCourseModal,
+  closeNewCourseModal
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CourseListPage);

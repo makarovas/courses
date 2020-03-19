@@ -6,7 +6,9 @@ import {
   ADD_COURSE_ERROR,
   LOAD_COURSES_BEGIN,
   LOAD_COURSES_SUCCESS,
-  LOAD_COURSES_ERROR
+  LOAD_COURSES_ERROR,
+  OPEN_NEW_COURSE_MODAL,
+  CLOSE_NEW_COURSE_MODAL
 } from "../consts";
 
 const initialState = {
@@ -14,7 +16,8 @@ const initialState = {
   coursesError: null,
   saveInProgress: false,
   saveError: false,
-  courses: []
+  courses: [],
+  newCourseModalOpen: false
 };
 
 const reducer = produce((draft, action) => {
@@ -42,6 +45,13 @@ const reducer = produce((draft, action) => {
     case LOAD_COURSES_ERROR:
       draft.coursesLoading = false;
       draft.saveError = action.error;
+      return;
+
+    case OPEN_NEW_COURSE_MODAL:
+      draft.newCourseModalOpen = true;
+      return;
+    case CLOSE_NEW_COURSE_MODAL:
+      draft.newCourseModalClose = false;
       return;
     default:
       return;
